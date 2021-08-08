@@ -17,5 +17,5 @@ def draw_text(image, path, string_data):
     font = ImageFont.truetype(path, 21)
     draw.text((3, 1),  string_data, font = font, fill = (0, 0, 0, 0))
     img = np.array(img_pil)
-    img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    #img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     return img

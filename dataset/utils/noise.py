@@ -10,9 +10,9 @@ from skimage.util import random_noise
 
 def add_salt_pepper(image):
     image = random_noise(image, mode = "s&p", clip=True)
-    return image
+    return (image*255.0).astype("uint8")
 
 def add_speckle(image):
     image = random_noise(image, mode = "speckle", clip=True)
-    return image
+    return (image*255.0).astype("uint8")
 
