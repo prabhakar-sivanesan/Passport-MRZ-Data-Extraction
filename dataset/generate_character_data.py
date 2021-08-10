@@ -15,12 +15,12 @@ from utils.noise import add_salt_pepper, add_speckle
 
 
 b,g,r,a = 0,0,0,0
-dataset_count = 100
+dataset_count = 5000
 blank_image = np.zeros((21,21,3),np.uint8)
-blank_image.fill(255)
+#blank_image.fill(255)
 
-output_path = "data/"     
-string_list = list(string.ascii_uppercase+"<")
+output_path = "black_background/"     
+string_list = list(string.ascii_uppercase+ string.digits +"<")
 fontpath = "assets/ocrb/OCRB Regular.ttf"
 
 def main():
@@ -30,10 +30,11 @@ def main():
             os.mkdir(output_path+string_data)
         for i in range(dataset_count):
             img = draw_text(blank_image.copy(), fontpath, string_data)
-            if i%2 == 0:
-                img = add_salt_pepper(img)
-            else:
-                img = add_speckle(img)
+            if i > 2000:
+                if i%2 == 0:
+                    img = add_salt_pepper(img)
+                else:
+                    img = add_speckle(img)
             cv2.imshow("res", img)
             output_filepath = output_path+string_data+"/"+str(i+1)+".jpg"
             cv2.imwrite(output_filepath, img)
